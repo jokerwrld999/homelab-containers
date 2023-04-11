@@ -1,76 +1,12 @@
-version: '3'
+version: "3"
 services:
   portainer:
-    image: portainer/portainer
-    hostname: portainer
+    image: portainer/portainer-ce:latest
+    ports:
+      - 9443:9443
+      volumes:
+        - data:/data
+        - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
-    environment:
-      - SESSION_TIMEOUT=315360000
-#    labels:
-#      traefik.enable: "true"
-#      traefik.docker.network: "traefik"
-#      traefik.http.services.portainer.loadbalancer.server.port: "9000"
-#      traefik.http.routers.portainer-http.entrypoints: "web"
-#      traefik.http.routers.portainer-http.rule: "Host(`portainer.devopsbrad.com`)"
-#      traefik.http.routers.portainer-https.entrypoints: "websecure"
-#      traefik.http.routers.portainer-https.rule: "Host(`portainer.devopsbrad.com`)"
-#      traefik.http.routers.portainer-https.tls: "true"
-#      traefik.http.routers.portainer-https.tls.certresolver: "letsEncrypt-production"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - portainer_data:/data
-    networks:
-      - services
-    deploy:
-      resources:
-        limits:
-          memory: 64M
-
-
-  #Database for Passbolt Password Manager
-  db:
-    image: mariadb:10.3
-    restart: unless-stopped
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "true"
-      MYSQL_DATABASE: "$PASSBOLT_DB_NAME"
-      MYSQL_USER: "$PASSBOLT_DB_USERNAME"
-      MYSQL_PASSWORD: "$PASSBOLT_DB_PASSWORD"
-    volumes:
-      - passbolt_database_volume:/var/lib/mysql
-    networks:
-      - services
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-
-# Docker Volumes
 volumes:
-  portainer_data:
-      driver: local
-      driver_opts:
-        type: 'none'
-        o: 'bind'
-        device: '$VOLUME_PATH/portainer'
-# Passbolt Volumes
-  passbolt_database_volume:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '$VOLUME_PATH/passbolt/db'
-
-# Docker Networks
-networks:
-  services:
-  home:
-    driver: local
-    driver_opts:
-      parent: $PARENT_INTERFACE
-    ipam:
-      config:
-        - subnet: $SUBNET
-          gateway: $GATEWAY
-          ip_range: $IP_RANGE
+  data:
