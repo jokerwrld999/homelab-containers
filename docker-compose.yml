@@ -1,47 +1,149 @@
 ---
-# Welcome to Dashy! To get started, run `docker compose up -d`
-# You can configure your container here, by modifying this file
-version: "3.8"
+version: '3.8'
 services:
-  dashy:
-    container_name: Dashy
-
-    # Pull latest image from DockerHub
-    image: lissy93/dashy
-
-    # To build from source, replace 'image: lissy93/dashy' with 'build: .'
-    # build: .
-
-    # Or, to use a Dockerfile for your archtecture, uncomment the following
-    # context: .
-    # dockerfile: ./docker/Dockerfile-arm32v7
-
-    # You can also use an image with a different tag, or pull from a different registry, e.g:
-    # image: ghcr.io/lissy93/dashy or image: lissy93/dashy:arm64v8
-
-    # Pass in your config file below, by specifying the path on your host machine
-    # volumes:
-      # - /path/to/my-config.yml:/app/public/conf.yml
-      # - /path/to/item-icons:/app/public/item-icons
-
-    # Set port that web service will be served on. Keep container port as 80
-    ports:
-      - 4000:80
-
-    # Set any environmental variables
-    environment:
-      - NODE_ENV=production
-    # Specify your user ID and group ID. You can find this by running `id -u` and `id -g`
-    #  - UID=1000
-    #  - GID=1000
-
-    # Specify restart policy
+  # Portainer Docker Management
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    hostname: portainer
     restart: unless-stopped
+    environment:
+      - SESSION_TIMEOUT=315360000
+    ports:
+      - 8000:8000
+      - 9000:9000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - portainer-data:/data
+    networks:
+      - services
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+  nginx:
+    container_name: nginx
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: on-failure
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - nginx-data:/data
+      - nginx-certs:/etc/letsencrypt
+    networks:
+      - services
+  db:
+    container_name: db
+    image: 'jc21/mariadb-aria:latest'
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - nginx-db:/var/lib/mysql
+    networks:
+      - services
+  dashy:
+    container_name: dashy
+    image: 'lissy93/dashy:latest'
+    restart: on-failure
+    ports:
+      - 8088:80
+    volumes:
+      - $VOLUME_PATH/dashy/public/conf.yml:/app/public/conf.yml
+      - dashy-icons:/app/public/item-icons/icons
+    networks:
+      - services
+  jenkins:
+    container_name: jenkins
+    build:
+      context: .
+      dockerfile: ./jenkins/jenkins_dockerfile
+    image: jenkins:built
+    restart: on-failure
+    ports:
+      - 8080:8080
+      - 5000:5000
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+    depends_on:
+      - jenkins_bind
+    networks:
+      - services
+  jenkins_bind:
+    container_name: bind_jenkins
+    build:
+      context: .
+      dockerfile: ./jenkins/jenkins_bind_dockerfile
+    image: jenkins_bind:built
+    restart: on-failure
+    privileged: true
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+    networks:
+      services:
+        aliases:
+          - docker
 
-    # Configure healthchecks
-    healthcheck:
-      test: ['CMD', 'node', '/app/services/healthcheck']
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+# Docker Networks
+networks:
+  services:
+    driver: bridge
+
+# Docker Volumes
+volumes:
+  portainer-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/portainer/portainer_data'
+  nginx-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx/nginx_data'
+  nginx-db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx/nginx_db'
+  nginx-certs:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx/nginx_certs'
+  dashy-icons:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/dashy/icons'
+  jenkins-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/jenkins/data'
+  jenkins-docker-certs:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/jenkins/certs'

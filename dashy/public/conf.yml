@@ -1,0 +1,74 @@
+appConfig:
+  theme: dracula
+  layout: auto
+  iconSize: medium
+  language: en
+  auth:
+    users:
+      - user: jokerwrld
+        hash: '$6$mXp/y/Thr.ZuoGux$ZC87aeVkIkCnO8pAdAZwGo7Jbc3xAHj.qnLQx/rosbTxJJF5b7WV5UXjhXgr47Wsel88d.EfVISXFGbTLFg4j1'
+        type: admin
+
+pageInfo:
+  title: Home Lab
+  description: Welcome to your Home Lab!
+  navLinks:
+
+    - title: GitHub
+      path: https://github.com/Lissy93/dashy
+
+    - title: Documentation
+      path: https://dashy.to/docs
+  footerText: ''
+
+sections:
+  - name: Today
+    icon: far fa-smile-beam
+    displayData:
+    collapsed: false
+    hideForGuests: false
+    widgets:
+      - type: clock
+      - type: weather
+        options:
+          apiKey: efdbade728b37086877a5e83442004db
+          city: Lviv
+
+  - name: Starter Only
+    icon: fas fa-server
+    items:
+      - title: Google
+        description: Search
+        icon: icons/dashboard-icons/png/google.png
+        url: https://google.com
+
+      - title: Chat GPT
+        description: Chat GPT
+        icon: icons/dashboard-icons/png/openai.png
+        url: https://chat.openai.com/
+
+  - name: CI/CD
+    icon: fas fa-server
+    items:
+      - title: Jenkins
+        description: Jenkins Control
+        icon: icons/dashboard-icons/png/jenkins.png
+        url: http://192.168.1.11:8080
+
+  - name: Server
+    icon: fas fa-server
+    items:
+      - title: Proxmox
+        description: Proxmox Server
+        icon: icons/dashboard-icons/png/proxmox.png
+        url: http://192.168.1.10:8006/
+
+      - title: Nginx Manager
+        description: Nginx Proxy Manager
+        icon: icons/dashboard-icons/png/nginx-proxy-manager.png
+        url: http://192.168.1.11:81/
+
+      - title: Portainer
+        description: Portainer CE
+        icon: icons/dashboard-icons/png/portainer.png
+        url: http://192.168.1.11:9000/
