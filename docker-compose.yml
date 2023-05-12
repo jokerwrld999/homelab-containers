@@ -25,7 +25,7 @@ services:
   nginx:
     container_name: nginx
     image: 'jc21/nginx-proxy-manager:latest'
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - 80:80
       - 81:81
@@ -44,7 +44,7 @@ services:
   db:
     container_name: db
     image: 'jc21/mariadb-aria:latest'
-    restart: on-failure
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
@@ -57,7 +57,7 @@ services:
   dashy:
     container_name: dashy
     image: 'lissy93/dashy:latest'
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - 8088:80
     volumes:
@@ -71,7 +71,7 @@ services:
       context: .
       dockerfile: ./jenkins/jenkins_dockerfile
     image: jenkins:built
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - 8080:8080
       - 5000:5000
@@ -88,7 +88,7 @@ services:
       context: .
       dockerfile: ./jenkins/jenkins_bind_dockerfile
     image: jenkins_bind:built
-    restart: on-failure
+    restart: unless-stopped
     privileged: true
     volumes:
       - jenkins-docker-certs:/certs/client

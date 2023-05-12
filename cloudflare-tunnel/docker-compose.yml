@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  cloudflaretunnel:
+    container_name: cloudflaretunnel
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    environment:
+      - TUNNEL_TOKEN=$TUNNEL_TOKEN
+    command: tunnel --no-autoupdate run
+    networks:
+      - homelab-containers_services
+
+networks:
+  homelab-containers_services:
+    external: true
