@@ -13,7 +13,6 @@ pageInfo:
   title: Home Lab
   description: Welcome to your Home Lab!
   navLinks:
-
     - title: GitHub
       path: https://github.com/Lissy93/dashy
 
@@ -53,7 +52,7 @@ sections:
       - title: Jenkins
         description: Jenkins Control
         icon: icons/dashboard-icons/png/jenkins.png
-        url: http://192.168.1.11:8080
+        url: https://jenkins.jokerwrld.win
 
   - name: Server
     icon: fas fa-server
@@ -66,9 +65,9 @@ sections:
       - title: Nginx Manager
         description: Nginx Proxy Manager
         icon: icons/dashboard-icons/png/nginx-proxy-manager.png
-        url: http://192.168.1.11:81/
+        url: https://nginxproxy.jokerwrld.win
 
       - title: Portainer
         description: Portainer CE
         icon: icons/dashboard-icons/png/portainer.png
-        url: http://192.168.1.11:9000/
+        url: https://portainer.jokerwrld.win

@@ -9,9 +9,6 @@ services:
     restart: unless-stopped
     environment:
       - SESSION_TIMEOUT=315360000
-    ports:
-      - 8000:8000
-      - 9000:9000
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -27,9 +24,9 @@ services:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
-      - 80:80
-      - 81:81
-      - 443:443
+      - '80:80'
+      - '81:81'
+      - '443:443'
     environment:
       DB_MYSQL_HOST: "db"
       DB_MYSQL_PORT: 3306
@@ -58,8 +55,6 @@ services:
     container_name: dashy
     image: 'lissy93/dashy:latest'
     restart: unless-stopped
-    ports:
-      - 8088:80
     volumes:
       - $VOLUME_PATH/dashy/public/conf.yml:/app/public/conf.yml
       - dashy-icons:/app/public/item-icons/icons
@@ -72,9 +67,6 @@ services:
       dockerfile: ./jenkins/jenkins_dockerfile
     image: jenkins:built
     restart: unless-stopped
-    ports:
-      - 8080:8080
-      - 5000:5000
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
