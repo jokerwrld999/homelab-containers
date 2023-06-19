@@ -81,5 +81,7 @@ services:
       - 9000:9000/tcp   # Graylog web interface and REST API
       - 1514:1514/tcp   # Syslog
       - 1514:1514/udp   # Syslog
+      - 5044:5044/tcp   # Filebeat
+      - 5044:5044/udp   # Filebeat
       - 12201:12201/tcp # GELF
       - 12201:12201/udp # GELF
