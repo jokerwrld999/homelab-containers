@@ -64,6 +64,18 @@ services:
       GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
       GRAYLOG_TIMEZONE: "Europe/Kyiv"
       TZ: "Europe/Kyiv"
+      GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
+      GRAYLOG_TRANSPORT_EMAIL_PROTOCOL: "smtp"
+      GRAYLOG_TRANSPORT_EMAIL_HOSTNAME: "smtp.gmail.com"
+      GRAYLOG_TRANSPORT_EMAIL_PORT: "587"
+      GRAYLOG_TRANSPORT_EMAIL_USE_AUTH: "true"
+      GRAYLOG_TRANSPORT_EMAIL_AUTH_USERNAME: "noreply@luzerna.ifc.edu.br"
+      GRAYLOG_TRANSPORT_EMAIL_AUTH_PASSWORD: "B4ydsfasdfasdfZBp"
+      GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "true"
+      GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "true"
+      GRAYLOG_TRANSPORT_FROM_EMAIL: "noreply@luzerna.ifc.edu.br"
+      GRAYLOG_TRANSPORT_SUBJECT_PREFIX: "[graylog]"
+
 
     entrypoint: /usr/bin/tini -- wait-for-it opensearch:9200 -- /docker-entrypoint.sh
     volumes:
