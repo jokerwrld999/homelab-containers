@@ -10,8 +10,8 @@ appConfig:
         type: admin
 
 pageInfo:
-  title: Home Lab
-  description: Welcome to your Home Lab!
+  title: HomeLab
+  description: Welcome to your HomeLab!
   navLinks:
     - title: GitHub
       path: https://github.com/Lissy93/dashy
@@ -60,7 +60,7 @@ sections:
       - title: Proxmox
         description: Proxmox Server
         icon: icons/dashboard-icons/png/proxmox.png
-        url: http://192.168.1.10:8006/
+        url: https://proxmox.jokerwrld.win
 
       - title: Nginx Manager
         description: Nginx Proxy Manager
