@@ -13,4 +13,8 @@ docker_volumes=("${VOLUME_PATH}/portainer/portainer_data" "${VOLUME_PATH}/nginx/
 
 create_volumes "${docker_volumes[@]}"
 
-rsync -r ./dashy/ $VOLUME_PATH/
+rsync -r ./dashy $VOLUME_PATH/
+
+# TODO: Setup dynamic device scannig and crating appropriate dirs.
+# TODO: Add cleaning mechanism.
+# TODO: And first setup also. Don't foreget to backup volumes and restore them.

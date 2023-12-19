@@ -1,6 +1,41 @@
 ---
 version: '3.8'
 services:
+  # Nginx Proxy Manager
+  nginx-proxy-manager:
+    container_name: nginx_proxy_manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "npm_db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - nginx-proxy-manager-data:/data
+      - nginx-proxy-manager-certs:/etc/letsencrypt
+    networks:
+      - services
+
+  # Database For NPM
+  db:
+    container_name: npm_db
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - nginx-proxy-manager-db:/var/lib/mysql
+    networks:
+      - services
+
   # Portainer Docker Management
   portainer:
     container_name: portainer
@@ -19,38 +54,8 @@ services:
       resources:
         limits:
           memory: 64M
-  nginx:
-    container_name: nginx
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    environment:
-      DB_MYSQL_HOST: "db"
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npm"
-      DB_MYSQL_PASSWORD: "npm"
-      DB_MYSQL_NAME: "npm"
-    volumes:
-      - nginx-data:/data
-      - nginx-certs:/etc/letsencrypt
-    networks:
-      - services
-  db:
-    container_name: db
-    image: 'jc21/mariadb-aria:latest'
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
-    volumes:
-      - nginx-db:/var/lib/mysql
-    networks:
-      - services
+
+  # Dashy Dashboard
   dashy:
     container_name: dashy
     image: 'lissy93/dashy:latest'
@@ -60,6 +65,8 @@ services:
       - dashy-icons:/app/public/item-icons/icons
     networks:
       - services
+
+  # Jenkins Server
   jenkins:
     container_name: jenkins
     build:
@@ -97,30 +104,30 @@ networks:
 
 # Docker Volumes
 volumes:
+  nginx-proxy-manager-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_data'
+  nginx-proxy-manager-db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_db'
+  nginx-proxy-manager-certs:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_certs'
   portainer-data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
       device: '$VOLUME_PATH/portainer/portainer_data'
-  nginx-data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '$VOLUME_PATH/nginx/nginx_data'
-  nginx-db:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '$VOLUME_PATH/nginx/nginx_db'
-  nginx-certs:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '$VOLUME_PATH/nginx/nginx_certs'
   dashy-icons:
     driver: local
     driver_opts:
