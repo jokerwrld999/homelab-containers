@@ -36,25 +36,6 @@ services:
     networks:
       - services
 
-  # Portainer Docker Management
-  portainer:
-    container_name: portainer
-    image: portainer/portainer
-    hostname: portainer
-    restart: unless-stopped
-    environment:
-      - SESSION_TIMEOUT=315360000
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - portainer-data:/data
-    networks:
-      - services
-    deploy:
-      resources:
-        limits:
-          memory: 64M
-
   # Dashy Dashboard
   dashy:
     container_name: dashy
@@ -67,26 +48,27 @@ services:
       - services
 
   # Jenkins Server
-  jenkins:
-    container_name: jenkins
+  jenkins-server:
+    container_name: jenkins_server
     build:
       context: .
-      dockerfile: ./jenkins/jenkins_dockerfile
+      dockerfile: ./jenkins/jenkins_server
     image: jenkins:built
     restart: unless-stopped
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
     depends_on:
-      - jenkins_bind
+      - jenkins-docker-in-docker
     networks:
       - services
-  jenkins_bind:
-    container_name: bind_jenkins
+  # Jenkins Docker In Docker
+  jenkins-docker-in-docker:
+    container_name: jenkins_dind
     build:
       context: .
-      dockerfile: ./jenkins/jenkins_bind_dockerfile
-    image: jenkins_bind:built
+      dockerfile: ./jenkins/jenkins_dind
+    image: jenkins_dind:built
     restart: unless-stopped
     privileged: true
     volumes:
@@ -122,12 +104,6 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '$VOLUME_PATH/nginx_proxy_manager/npm_certs'
-  portainer-data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '$VOLUME_PATH/portainer/portainer_data'
   dashy-icons:
     driver: local
     driver_opts:

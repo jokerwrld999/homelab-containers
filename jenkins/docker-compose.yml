@@ -1,36 +1,34 @@
 ---
 version: '3.8'
 services:
-  jenkins:
-    container_name: jenkins
+  # Jenkins Server
+  jenkins-server:
+    container_name: jenkins_server
     build:
       context: .
-      dockerfile: ./jenkins_dockerfile
+      dockerfile: ./jenkins/jenkins_server
     image: jenkins:built
     restart: unless-stopped
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
     depends_on:
-      - jenkins_bind
-    ports:
-      - 8080:8080
-      - 5000:5000
+      - jenkins-docker-in-docker
     networks:
       - services
-  jenkins_bind:
-    container_name: bind_jenkins
+
+  # Jenkins Docker In Docker
+  jenkins-docker-in-docker:
+    container_name: jenkins_dind
     build:
       context: .
-      dockerfile: ./jenkins_bind_dockerfile
-    image: jenkins_bind:built
+      dockerfile: ./jenkins/jenkins_dind
+    image: jenkins_dind:built
     restart: unless-stopped
     privileged: true
     volumes:
       - jenkins-docker-certs:/certs/client
       - jenkins-data:/var/jenkins_home
-    ports:
-      - 2376:2376
     networks:
       services:
         aliases:

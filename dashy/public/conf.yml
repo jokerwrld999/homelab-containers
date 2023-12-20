@@ -6,7 +6,7 @@ appConfig:
   auth:
     users:
       - user: jokerwrld
-        hash: '$6$mXp/y/Thr.ZuoGux$ZC87aeVkIkCnO8pAdAZwGo7Jbc3xAHj.qnLQx/rosbTxJJF5b7WV5UXjhXgr47Wsel88d.EfVISXFGbTLFg4j1'
+        hash: '$6$fs3UbyQmGqJxHL/8$CswbHHygM8F1gYh.ROH8K7/hTPbZzYkAMA1wNoxA7DpzGawM2WDKvDKJafSefURVoTEtkXn8RZdervMydjbsy1'
         type: admin
 
 pageInfo:
@@ -51,8 +51,8 @@ sections:
     items:
       - title: Jenkins
         description: Jenkins Control
-        icon: icons/dashboard-icons/png/jenkins.png
-        url: https://jenkins.jokerwrld.win
+        icon: fa-brands:jenkins
+        url: https://jenkins.home.jokerwrld.win
 
   - name: Server
     icon: fas fa-server
@@ -60,14 +60,14 @@ sections:
       - title: Proxmox
         description: Proxmox Server
         icon: icons/dashboard-icons/png/proxmox.png
-        url: https://proxmox.jokerwrld.win
+        url: https://proxmox.home.jokerwrld.win
 
       - title: Nginx Manager
         description: Nginx Proxy Manager
         icon: icons/dashboard-icons/png/nginx-proxy-manager.png
-        url: https://nginxproxy.jokerwrld.win
+        url: https://nginxproxy.home.jokerwrld.win
 
       - title: Portainer
         description: Portainer CE
         icon: icons/dashboard-icons/png/portainer.png
-        url: https://portainer.jokerwrld.win
+        url: https://portainer.home.jokerwrld.win
