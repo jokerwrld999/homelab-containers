@@ -1,31 +1,35 @@
 pipeline {
-    agent {
-        node {
-            label 'jenkins-agent-goes-here'
-            }
-      }
+    agent any
     stages {
+        stage('Check Docker installation') {
+            steps {
+                script {
+                    echo 'Checking for Docker...'
+                    sh 'docker ps || (echo "Docker not installed" && exit 1)'
+                }
+            }
+        }
         stage('Build') {
             steps {
-                echo "Building.."
+                echo 'Building...'
                 sh '''
-                echo "doing build stuff.."
+                echo "Doing build stuff..."
                 '''
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo 'Testing...'
                 sh '''
-                echo "doing test stuff.."
+                echo "Doing test stuff..."
                 '''
             }
         }
         stage('Deliver') {
             steps {
-                echo 'Deliver....'
+                echo 'Deliver...'
                 sh '''
-                echo "doing delivery stuff.."
+                echo "Doing delivery stuff..."
                 '''
             }
         }
