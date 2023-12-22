@@ -8,9 +8,9 @@ def create_volume_folders(compose_file_path, base_path):
     base_path = os.path.expanduser(base_path)
 
     # Clean create: delete base_path if it exists
-    if os.path.exists(base_path):
-        print(f"Deleting existing base path: {base_path}")
-        shutil.rmtree(base_path)
+    # if os.path.exists(base_path):
+    #     print(f"Deleting existing base path: {base_path}")
+    #     shutil.rmtree(base_path)
 
     # Load Docker Compose file
     with open(compose_file_path, 'r') as file:
