@@ -1,2 +1,2 @@
 colorama
-dotenv
+python-dotenv
