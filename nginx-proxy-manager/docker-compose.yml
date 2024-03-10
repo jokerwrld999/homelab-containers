@@ -1,0 +1,63 @@
+---
+version: '3.8'
+services:
+  # Nginx Proxy Manager
+  nginx-proxy-manager:
+    container_name: nginx_proxy_manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "npm_db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - nginx-proxy-manager-data:/data
+      - nginx-proxy-manager-certs:/etc/letsencrypt
+    networks:
+      - services
+
+  # Database For NPM
+  db:
+    container_name: npm_db
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - nginx-proxy-manager-db:/var/lib/mysql
+    networks:
+      - services
+
+# Docker Networks
+networks:
+  services:
+    driver: bridge
+
+# Docker Volumes
+volumes:
+  nginx-proxy-manager-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_data'
+  nginx-proxy-manager-db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_db'
+  nginx-proxy-manager-certs:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/nginx_proxy_manager/npm_certs'

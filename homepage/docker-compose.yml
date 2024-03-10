@@ -1,0 +1,28 @@
+---
+version: '3.8'
+services:
+  homepage:
+    container_name: homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    restart: unless-stopped
+    env_file:
+      - ./homepage/default.env
+    volumes:
+      - homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - services
+
+# Docker Networks
+networks:
+  services:
+    driver: bridge
+
+# Docker Volumes
+volumes:
+  homepage-config:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/homepage/config'

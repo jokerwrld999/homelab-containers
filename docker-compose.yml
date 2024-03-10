@@ -36,6 +36,21 @@ services:
     networks:
       - services
 
+  homepage:
+    container_name: homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    restart: unless-stopped
+    env_file:
+      - ./homepage/default.env
+    # environment:
+    #   PUID: "$PUID"
+    #   PGID: "$PGID"
+    volumes:
+      - homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - services
+
   # Dashy Dashboard
   dashy:
     container_name: dashy
@@ -104,6 +119,12 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '$VOLUME_PATH/nginx_proxy_manager/npm_certs'
+  homepage-config:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '$VOLUME_PATH/homepage/config'
   dashy-icons:
     driver: local
     driver_opts:
