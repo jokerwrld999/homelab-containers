@@ -9,6 +9,9 @@ services:
       dockerfile: ./jenkins/jenkins_server
     image: jenkins:built
     restart: unless-stopped
+    ports:
+      - '8080:8080'
+      - '50000:50000'
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro

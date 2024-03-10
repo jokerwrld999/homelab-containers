@@ -5,6 +5,8 @@ services:
     container_name: homepage
     image: ghcr.io/gethomepage/homepage:latest
     restart: unless-stopped
+    ports:
+      - '3000:3000'
     env_file:
       - ./homepage/default.env
     volumes:
