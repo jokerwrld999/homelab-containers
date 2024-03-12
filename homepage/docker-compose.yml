@@ -6,6 +6,8 @@ services:
     hostname: tailscale-homepage
     image: tailscale/tailscale:latest
     restart: unless-stopped
+    ports:
+      - '3000:3000'
     environment:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_EXTRA_ARGS=--accept-routes
@@ -23,8 +25,6 @@ services:
     depends_on:
       - tailscale
     restart: unless-stopped
-    # ports:
-    #   - '3000:3000'
     env_file:
       - ./.env
     volumes:
