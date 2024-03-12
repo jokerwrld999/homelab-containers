@@ -17,8 +17,6 @@ services:
     cap_add:
       - net_admin
       - sys_module
-    networks:
-      - services
   homepage:
     container_name: homepage
     image: ghcr.io/gethomepage/homepage:latest
@@ -32,14 +30,7 @@ services:
     volumes:
       - homepage-config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - services
     network_mode: service:tailscale
-
-# Docker Networks
-networks:
-  services:
-    driver: bridge
 
 # Docker Volumes
 volumes:
