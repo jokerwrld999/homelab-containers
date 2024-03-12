@@ -1,19 +1,6 @@
 ---
 version: '3.8'
 services:
-  homepage:
-    container_name: homepage
-    image: ghcr.io/gethomepage/homepage:latest
-    restart: unless-stopped
-    ports:
-      - '3000:3000'
-    env_file:
-      - ./.env
-    volumes:
-      - homepage-config:/app/config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - services
   tailscale:
     container_name: tailscale
     hostname: tailscale-homepage
@@ -32,6 +19,22 @@ services:
       - sys_module
     networks:
       - services
+  homepage:
+    container_name: homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    depends_on:
+      - tailscale
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./.env
+    volumes:
+      - homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - services
+    network_mode: service:tailscale
 
 # Docker Networks
 networks:
