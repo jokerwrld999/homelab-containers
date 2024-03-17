@@ -6,24 +6,24 @@
 - Hypervisor:
     - Proxmox:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+        href: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
         description: pve1
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-            node: xing-01
+            url: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
+            username:  "{{HOMEPAGE_VAR_HOME_PROXMOX_USER}}"
+            password:  "{{HOMEPAGE_VAR_HOME_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_HOME_PROXMOX_NODE}}"
     - Proxmox:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+        href: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
         description: pve2
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-            node: xing-02
+            url: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
+            username:  "{{HOMEPAGE_VAR_WORK_PROXMOX_USER}}"
+            password:  "{{HOMEPAGE_VAR_WORK_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_WORK_PROXMOX_NODE}}"
     - Proxmox:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
