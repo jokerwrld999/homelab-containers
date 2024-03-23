@@ -1,49 +1,38 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/latest/configs/services
-# icons found here https://github.com/walkxcode/dashboard-icons
-
 - Hypervisor:
-    - Proxmox:
+    - Proxmox-Home-PVE-1:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
+        href: "{{HOMEPAGE_VAR_HOME_PVE_1_PROXMOX_URL}}"
         description: pve1-ProDesk
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
-            username: "{{HOMEPAGE_VAR_HOME_PROXMOX_USER}}"
-            password: "{{HOMEPAGE_VAR_HOME_PROXMOX_API_KEY}}"
-            node: "{{HOMEPAGE_VAR_HOME_PROXMOX_NODE}}"
-    - Proxmox:
+            url: "{{HOMEPAGE_VAR_HOME_PVE_1_PROXMOX_URL}}"
+            username: "{{HOMEPAGE_VAR_HOME_PVE_1_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_HOME_PVE_1_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_HOME_PVE_1_PROXMOX_NODE}}"
+
+    - Proxmox-Work-PVE-1:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
+        href: "{{HOMEPAGE_VAR_WORK_PVE_1_PROXMOX_URL}}"
         description: pve1-z640
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
-            username: "{{HOMEPAGE_VAR_WORK_PROXMOX_USER}}"
-            password: "{{HOMEPAGE_VAR_WORK_PROXMOX_API_KEY}}"
-            node: "{{HOMEPAGE_VAR_WORK_PROXMOX_NODE}}"
-    - Proxmox:
+            url: "{{HOMEPAGE_VAR_WORK_PVE_1_PROXMOX_URL}}"
+            username: "{{HOMEPAGE_VAR_WORK_PVE_1_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_WORK_PVE_1_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_WORK_PVE_1_PROXMOX_NODE}}"
+
+    - Proxmox-Work-PVE-2:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_WORK_2_PROXMOX_URL}}"
+        href: "{{HOMEPAGE_VAR_WORK_PVE_2_PROXMOX_URL}}"
         description: pve2-z640
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_WORK_2_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_WORK_2_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_WORK_2_PROXMOX_API_KEY}}"
-            # node: xing-03
-    # - Proxmox:
-    #     icon: proxmox.svg
-    #     href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-    #     description: pve4
-    #     widget:
-    #         type: proxmox
-    #         url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-    #         username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-    #         password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-    #         node: storinator
+            url: "{{HOMEPAGE_VAR_WORK_PVE_2_PROXMOX_URL}}"
+            username:  "{{HOMEPAGE_VAR_WORK_PVE_2_PROXMOX_USER}}"
+            password:  "{{HOMEPAGE_VAR_WORK_PVE_2_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_WORK_PVE_2_PROXMOX_NODE}}"
+
 - Containers:
     - Rancher:
         icon: rancher.svg
@@ -90,13 +79,13 @@
 - Network:
     - UniFi:
         icon: unifi.svg
-        href: "{{HOMEPAGE_VAR_UNIFI_NETWORK_URL}}"
+        href: "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE_1URL}}"
         description: network
         widget:
             type: unifi
-            url: "{{HOMEPAGE_VAR_UNIFI_NETWORK_URL}}"
-            username:  "{{HOMEPAGE_VAR_UNIFI_NETWORK_USERNAME}}"
-            password:  "{{HOMEPAGE_VAR_UNIFI_NETWORK_PASSWORD}}"
+            url: "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE_1URL}}"
+            username:  "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE_1USERNAME}}"
+            password:  "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE_1_PASSWORD}}"
     - Uptime Kuma:
         icon: uptime-kuma.svg
         href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
@@ -178,12 +167,12 @@
 - Home Automation:
     - Home Assistant:
         icon: home-assistant.svg
-        href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+        href: "{{HOMEPAGE_VAR_HOME_PVE_1ASSISTANT_URL}}"
         description: home
         widget:
             type: homeassistant
-            url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
-            key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
+            url: "{{HOMEPAGE_VAR_HOME_PVE_1ASSISTANT_URL}}"
+            key: "{{HOMEPAGE_VAR_HOME_PVE_1ASSISTANT_API_KEY}}"
     - UniFi:
         icon: https://play-lh.googleusercontent.com/DmgQvSdocOrGr0D0rxSBE9sqh23Fw3ck3BgKRN788cZnOKgcZlcEAFRYwmUbp6vMTVI
         href: "{{HOMEPAGE_VAR_UNIFI_PROTECT_URL}}"
