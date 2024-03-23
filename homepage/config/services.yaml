@@ -7,43 +7,43 @@
     - Proxmox:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
-        description: pve1
+        description: pve1-ProDesk
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_HOME_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_HOME_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_HOME_PROXMOX_API_KEY}}"
+            username: "{{HOMEPAGE_VAR_HOME_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_HOME_PROXMOX_API_KEY}}"
             node: "{{HOMEPAGE_VAR_HOME_PROXMOX_NODE}}"
     - Proxmox:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
-        description: pve2
+        description: pve1-z640
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_WORK_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_WORK_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_WORK_PROXMOX_API_KEY}}"
+            username: "{{HOMEPAGE_VAR_WORK_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_WORK_PROXMOX_API_KEY}}"
             node: "{{HOMEPAGE_VAR_WORK_PROXMOX_NODE}}"
-    - Proxmox:
-        icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-        description: pve2
-        widget:
-            type: proxmox
-            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-            node: xing-03
-    - Proxmox:
-        icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-        description: pve4
-        widget:
-            type: proxmox
-            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-            node: storinator
+    # - Proxmox:
+    #     icon: proxmox.svg
+    #     href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+    #     description: pve2
+    #     widget:
+    #         type: proxmox
+    #         url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+    #         username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+    #         password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
+    #         node: xing-03
+    # - Proxmox:
+    #     icon: proxmox.svg
+    #     href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+    #     description: pve4
+    #     widget:
+    #         type: proxmox
+    #         url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+    #         username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+    #         password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
+    #         node: storinator
 - Containers:
     - Rancher:
         icon: rancher.svg
