@@ -143,10 +143,11 @@
             url: "{{HOMEPAGE_VAR_WORK_TRUENAS_URL}}"
             key: "{{HOMEPAGE_VAR_WORK_TRUENAS_API_KEY}}"
 
-    # - MinIO:
-    #     icon: minio.svg
-    #     href: "{{HOMEPAGE_VAR_MINIO_URL}}"
-    #     description: object storage
+    - File Browser:
+        icon: filebrowser.svg
+        href: "{{HOMEPAGE_VAR_FILE_BROWSER_URL}}"
+        description: File Browser
+
 # - Media:
     # - Plex:
     #     icon: plex.svg
