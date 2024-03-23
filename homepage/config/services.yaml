@@ -86,6 +86,7 @@
             type: uptimekuma
             url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
             slug: home
+
     # - UniFi:
     #     icon: unifi.svg
     #     href: "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE1URL}}"
@@ -102,7 +103,7 @@
     #     widget:
     #         type: uptimerobot
     #         url: https://api.uptimerobot.com
-            key: "{{HOMEPAGE_VAR_UPTIME_ROBOT_API_KEY}}"
+            # key: "{{HOMEPAGE_VAR_UPTIME_ROBOT_API_KEY}}"
 - Storage:
     - TrueNAS-Home:
         icon: truenas.svg
@@ -112,6 +113,7 @@
             type: truenas
             url: "{{HOMEPAGE_VAR_HOME_TRUENAS_URL}}"
             key: "{{HOMEPAGE_VAR_HOME_TRUENAS_API_KEY}}"
+
     - TrueNAS-Work:
         icon: truenas.svg
         href: "{{HOMEPAGE_VAR_WORK_TRUENAS_URL}}"
@@ -120,6 +122,7 @@
             type: truenas
             url: "{{HOMEPAGE_VAR_WORK_TRUENAS_URL}}"
             key: "{{HOMEPAGE_VAR_WORK_TRUENAS_API_KEY}}"
+
     # - MinIO:
     #     icon: minio.svg
     #     href: "{{HOMEPAGE_VAR_MINIO_URL}}"
