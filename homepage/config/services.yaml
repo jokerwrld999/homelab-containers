@@ -33,7 +33,7 @@
             password:  "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_API_KEY}}"
             node: "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_NODE}}"
 
-- Containers:
+# - Containers:
     # - Rancher:
     #     icon: rancher.svg
     #     href: "{{HOMEPAGE_VAR_RACNHER_URL}}"
@@ -127,7 +127,7 @@
     #     icon: minio.svg
     #     href: "{{HOMEPAGE_VAR_MINIO_URL}}"
     #     description: object storage
-- Media:
+# - Media:
     # - Plex:
     #     icon: plex.svg
     #     href: "{{HOMEPAGE_VAR_PLEX_URL}}"
@@ -151,7 +151,7 @@
     #     widget:
     #         type: hdhomerun
     #         url: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
-- Remote Access:
+# - Remote Access:
     # - PiKVM:
     #     icon: https://avatars.githubusercontent.com/u/41749659?s=200&v=4
     #     href: "{{HOMEPAGE_VAR_PIKVM_URL}}"
@@ -176,7 +176,7 @@
     #     icon: https://cdn11.bigcommerce.com/s-fg272t4iw0/images/stencil/1280x1280/products/2549/2802/C-12556__63907.1557814942.jpg?c=2
     #     href: "{{HOMEPAGE_VAR_UPS_2_URL}}"
     #     description: 5p
-- Home Automation:
+# - Home Automation:
     # - Home Assistant:
     #     icon: home-assistant.svg
     #     href: "{{HOMEPAGE_VAR_HOME_PVE1ASSISTANT_URL}}"
