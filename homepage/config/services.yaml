@@ -88,7 +88,7 @@
             slug: home
 
     - Nginx Proxy Manager Home:
-        icon: uptime-kuma.svg
+        icon: nginx-proxy-manager.svg
         href: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_URL}}"
         description: npm-home
         widget:
@@ -98,7 +98,7 @@
             password: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_PASSWORD}}"
 
     - Nginx Proxy Manager Work:
-        icon: uptime-kuma.svg
+        icon: nginx-proxy-manager.svg
         href: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_URL}}"
         description: npm-work
         widget:
