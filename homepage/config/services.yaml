@@ -87,6 +87,26 @@
             url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
             slug: home
 
+    - Nginx Proxy Manager Home:
+        icon: uptime-kuma.svg
+        href: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_URL}}"
+        description: npm-home
+        widget:
+            type: npm
+            url: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_URL}}"
+            username: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_USERNAME}}"
+            password: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_PASSWORD}}"
+
+    - Nginx Proxy Manager Work:
+        icon: uptime-kuma.svg
+        href: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_URL}}"
+        description: npm-work
+        widget:
+            type: npm
+            url: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_URL}}"
+            username: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_USERNAME}}"
+            password: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_PASSWORD}}"
+
     # - UniFi:
     #     icon: unifi.svg
     #     href: "{{HOMEPAGE_VAR_UNIFI_NETWORK_PVE1URL}}"
