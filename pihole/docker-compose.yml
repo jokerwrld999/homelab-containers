@@ -9,7 +9,7 @@ services:
       - unbound:/opt/unbound/etc/unbound/
     networks:
       private_network:
-        ipv4_address: 10.2.0.200
+        ipv4_address: "{{UNBOUND_IPV4_ADDRESS}}"
     cap_add:
       - NET_ADMIN
     env_file: .env
@@ -24,11 +24,11 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "8888:80/tcp"
+      # - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "80:80/tcp"
     dns:
       - 127.0.0.1
-      - ${PIHOLE_DNS}
+      - "{{UNBOUND_IPV4_ADDRESS}}"
     volumes:
       - pihole-data:/etc/pihole/
       - pihole-dns:/etc/dnsmasq.d/
@@ -36,7 +36,7 @@ services:
       - NET_ADMIN
     networks:
       private_network:
-        ipv4_address: 10.2.0.100
+        ipv4_address: "{{PIHOLE_IPV4_ADDRESS}}"
     env_file: ./.env
 
 # Docker Networks
@@ -45,7 +45,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.2.0.0/24
+        - subnet: "{{PIHOLE_SUBNET}}"
 
 # Docker Volumes
 volumes:
