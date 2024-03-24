@@ -148,7 +148,17 @@
         href: "{{HOMEPAGE_VAR_FILE_BROWSER_URL}}"
         description: File Browser
 
-# - Media:
+- Media:
+    - NextCloud:
+        icon: nextcloud.svg
+        href: "{{HOMEPAGE_VAR_NEXTCLOUD_URL}}"
+        description: nextcloud
+        widget:
+            type: nextcloud
+            url: "{{HOMEPAGE_VAR_NEXTCLOUD_URL}}"
+            username:  "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}"
+            password:  "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}"
+
     # - Plex:
     #     icon: plex.svg
     #     href: "{{HOMEPAGE_VAR_PLEX_URL}}"

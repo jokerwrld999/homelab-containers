@@ -14,7 +14,7 @@ background:
 theme: dark
 color: slate
 
-useEqualHeights: true
+# useEqualHeights: true
 
 layout:
   Hypervisor:
