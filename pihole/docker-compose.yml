@@ -9,7 +9,7 @@ services:
       - unbound:/opt/unbound/etc/unbound/
     networks:
       private_network:
-        ipv4_address: "{{UNBOUND_IPV4_ADDRESS}}"
+        ipv4_address: "${UNBOUND_IPV4_ADDRESS}"
     cap_add:
       - NET_ADMIN
     env_file: .env
@@ -28,7 +28,7 @@ services:
       - "80:80/tcp"
     dns:
       - 127.0.0.1
-      - "{{UNBOUND_IPV4_ADDRESS}}"
+      - "${UNBOUND_IPV4_ADDRESS}"
     volumes:
       - pihole-data:/etc/pihole/
       - pihole-dns:/etc/dnsmasq.d/
@@ -36,7 +36,7 @@ services:
       - NET_ADMIN
     networks:
       private_network:
-        ipv4_address: "{{PIHOLE_IPV4_ADDRESS}}"
+        ipv4_address: "${PIHOLE_IPV4_ADDRESS}"
     env_file: ./.env
 
 # Docker Networks
@@ -45,7 +45,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: "{{PIHOLE_SUBNET}}"
+        - subnet: "${PIHOLE_SUBNET}"
 
 # Docker Volumes
 volumes:
