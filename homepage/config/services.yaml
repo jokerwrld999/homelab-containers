@@ -33,6 +33,17 @@
             password:  "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_API_KEY}}"
             node: "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_NODE}}"
 
+    - Proxmox-Work-PVE3:
+        icon: proxmox.svg
+        href: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_URL}}"
+        description: pve3-desktop
+        widget:
+            type: proxmox
+            url: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_URL}}"
+            username:  "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_USER}}"
+            password:  "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_API_KEY}}"
+            node: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_NODE}}"
+
 # - Containers:
     # - Rancher:
     #     icon: rancher.svg

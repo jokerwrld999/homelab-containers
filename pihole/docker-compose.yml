@@ -37,7 +37,7 @@ services:
     networks:
       private_network:
         ipv4_address: "${PIHOLE_IPV4_ADDRESS}"
-    env_file: ./.env
+    env_file: .env
 
 # Docker Networks
 networks:
