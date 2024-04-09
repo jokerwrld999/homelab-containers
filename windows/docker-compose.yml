@@ -17,8 +17,22 @@ services:
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
+    networks:
+      vlan:
+        ipv4_address: 10.10.10.100
     stop_grace_period: 2m
     restart: on-failure
+
+networks:
+  vlan:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: "10.10.10.0/24"
+          ip_range: "10.10.10.64/26"
+          gateway: "10.10.10.254"
 
 volumes:
   windows-storage:
