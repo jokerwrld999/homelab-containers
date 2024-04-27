@@ -5,7 +5,7 @@
 title: Joker Wrld Homepage
 
 background:
-  image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
+  image: https://cdnb.artstation.com/p/assets/images/images/060/534/953/medium/julia-gorokhova-sci-fi-alley-fin2.jpg?1678790506
   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
   saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
