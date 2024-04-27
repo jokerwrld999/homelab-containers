@@ -17,7 +17,7 @@ color: slate
 # useEqualHeights: true
 
 layout:
-  Hypervisor:
+  Hypervisors:
     header: true
     style: row
     columns: 4
@@ -33,19 +33,11 @@ layout:
     header: true
     style: row
     columns: 4
-  Remote Access:
-    header: true
-    style: row
-    columns: 4
   Storage:
     header: true
     style: row
     columns: 4
   Media:
-    header: true
-    style: row
-    columns: 4
-  Home Automation:
     header: true
     style: row
     columns: 4
