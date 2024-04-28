@@ -3,7 +3,7 @@
     - Proxmox-Home-PVE1:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_HOME_PVE1_PROXMOX_URL}}"
-        description: pve1-ProDesk
+        description: "{{HOMEPAGE_VAR_HOME_PVE1_PROXMOX_DESCRIPTION}}"
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_HOME_PVE1_PROXMOX_URL}}"
@@ -14,7 +14,7 @@
     - Proxmox-Work-PVE1:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_WORK_PVE1_PROXMOX_URL}}"
-        description: pve1-z640
+        description: "{{HOMEPAGE_VAR_WORK_PVE1_PROXMOX_DESCRIPTION}}"
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_WORK_PVE1_PROXMOX_URL}}"
@@ -25,7 +25,7 @@
     - Proxmox-Work-PVE2:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_URL}}"
-        description: pve2-z640
+        description: "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_DESCRIPTION}}"
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_WORK_PVE2_PROXMOX_URL}}"
@@ -36,33 +36,33 @@
     - Proxmox-Work-PVE3:
         icon: proxmox.svg
         href: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_URL}}"
-        description: pve3-desktop
+        description: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_DESCRIPTION}}"
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_URL}}"
-            username:  "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_USER}}"
-            password:  "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_API_KEY}}"
+            username: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_API_KEY}}"
             node: "{{HOMEPAGE_VAR_WORK_PVE3_PROXMOX_NODE}}"
 
 # - Containers:
     # - Rancher:
     #     icon: rancher.svg
     #     href: "{{HOMEPAGE_VAR_RACNHER_URL}}"
-    #     description: k8s
+    #     description: "{{HOMEPAGE_VAR_RACNHER_DESCRIPTION}}"
     # - Longhorn:
     #     icon: longhorn.svg
     #     href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
-    #     description: k8s storage
+    #     description: "{{HOMEPAGE_VAR_LONGHORN_DESCRIPTION}}"
 
 - DNS:
     - Pi-Hole1:
         icon: pi-hole.svg
-        href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}/admin/"
-        description: quasar
+        href: "{{HOMEPAGE_VAR_PIHOLE1_URL}}/admin/"
+        description: "{{HOMEPAGE_VAR_PIHOLE1_DESCRIPTION}}"
         widget:
             type: pihole
-            url: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
-            key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_1}}"
+            url: "{{HOMEPAGE_VAR_PIHOLE1_URL}}"
+            key: "{{HOMEPAGE_VAR_PIHOLE1_API_KEY}}"
 
 - Network:
     - Uptime Kuma:
@@ -77,7 +77,7 @@
     - Nginx Proxy Manager Home:
         icon: nginx-proxy-manager.svg
         href: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_URL}}"
-        description: npm-home
+        description: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_DESCRIPTION}}"
         widget:
             type: npm
             url: "{{HOMEPAGE_VAR_HOME_NGINX_PROXY_MANAGER_URL}}"
@@ -87,7 +87,7 @@
     - Nginx Proxy Manager Work:
         icon: nginx-proxy-manager.svg
         href: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_URL}}"
-        description: npm-work
+        description: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_DESCRIPTION}}"
         widget:
             type: npm
             url: "{{HOMEPAGE_VAR_WORK_NGINX_PROXY_MANAGER_URL}}"
@@ -98,7 +98,7 @@
     - TrueNAS-Home:
         icon: truenas.svg
         href: "{{HOMEPAGE_VAR_HOME_TRUENAS_URL}}"
-        description: scale
+        description: "{{HOMEPAGE_VAR_HOME_TRUENAS_DESCRIPTION}}"
         widget:
             type: truenas
             url: "{{HOMEPAGE_VAR_HOME_TRUENAS_URL}}"
@@ -107,7 +107,7 @@
     - TrueNAS-Work:
         icon: truenas.svg
         href: "{{HOMEPAGE_VAR_WORK_TRUENAS_URL}}"
-        description: scale
+        description: "{{HOMEPAGE_VAR_WORK_TRUENAS_DESCRIPTION}}"
         widget:
             type: truenas
             url: "{{HOMEPAGE_VAR_WORK_TRUENAS_URL}}"
@@ -116,13 +116,13 @@
     - File Browser:
         icon: filebrowser.svg
         href: "{{HOMEPAGE_VAR_FILE_BROWSER_URL}}"
-        description: File Browser
+        description: "{{HOMEPAGE_VAR_FILE_BROWSER_DESCRIPTION}}"
 
 - Media:
     - NextCloud:
         icon: nextcloud.svg
         href: "{{HOMEPAGE_VAR_NEXTCLOUD_URL}}"
-        description: nextcloud
+        description: "{{HOMEPAGE_VAR_NEXTCLOUD_DESCRIPTION}}"
         widget:
             type: nextcloud
             url: "{{HOMEPAGE_VAR_NEXTCLOUD_URL}}"
