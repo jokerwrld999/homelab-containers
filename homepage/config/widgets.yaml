@@ -1,13 +1,15 @@
 ---
 # For configuration options and examples, please see:
-# https://gethomepage.dev/latest/configs/service-widgets
+# https://gethomepage.dev/latest/widgets/info/resources/
 
 - resources:
     cpu: true
+    cputemp: true
     memory: true
     disk: /
+    uptime: true
 
 - datetime:
     text_size: xl
     format:
-      timeStyle: short
+    timeStyle: short
